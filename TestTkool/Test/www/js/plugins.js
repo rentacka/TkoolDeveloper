@@ -14,7 +14,7 @@ var $plugins =
 {"name":"BugFixParallelEventAndCharacter","status":true,"description":"並列処理イベントのセーブ失敗バグ修正プラグイン","parameters":{}},
 {"name":"liply_memoryleak_patch","status":true,"description":"メモリリークパッチ","parameters":{}},
 {"name":"lightweightPicture","status":false,"description":"1.3.1用。一部画像表示を軽量化します。影響範囲未確認なので使用には注意","parameters":{}},
-{"name":"FPSlimitsettings_InitOnly","status":false,"description":"ゲームのフレームレート最大値設定をオプション項目に加えます。variablesには任意の変数の値を入れて下さい。","parameters":{"fps":"30"}},
+{"name":"FPSlimitsettings_InitOnly","status":true,"description":"ゲームのフレームレート最大値設定をオプション項目に加えます。variablesには任意の変数の値を入れて下さい。","parameters":{"fps":"60"}},
 {"name":"ShowFPSOnStartup","status":true,"description":"タイトル画面時にFPS表示をONにさせます","parameters":{}},
 {"name":"liply_onBitmapLoad_patch","status":true,"description":"","parameters":{}},
 {"name":"NobleMushroom","status":false,"description":"ノベルゲーム総合プラグイン","parameters":{"表示タイプ初期値":"1","タイトル表示タイプ":"1","コマンド単位ウェイト":"ON","表示速度変数":"1","表示速度初期値":"1","クリック瞬間表示":"ON","自動改行":"ON","相対フォントサイズ":"6","明朝体表示":"ON","ゴシック体表示":"OFF","選択肢接頭辞":"0","画面横サイズ":"0","画面縦サイズ":"0","モバイル画面横サイズ":"0","モバイル画面縦サイズ":"0","モバイルモード":"OFF","オートセーブ":"ON","ポーズ可能":"ON","オートセーブ名称":"オートセーブ","ロードコマンド":"ロード","Qセーブコマンド":"クイックセーブ","Qロードコマンド":"クイックロード"}},
