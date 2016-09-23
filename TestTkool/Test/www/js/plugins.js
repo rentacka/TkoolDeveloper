@@ -13,7 +13,7 @@ var $plugins =
 {"name":"BugFixImageOnLoad","status":true,"description":"画像ロード遅延時のエラー修正プラグイン","parameters":{}},
 {"name":"BugFixParallelEventAndCharacter","status":true,"description":"並列処理イベントのセーブ失敗バグ修正プラグイン","parameters":{}},
 {"name":"liply_memoryleak_patch","status":true,"description":"メモリリークパッチ","parameters":{}},
-{"name":"lightweightPicture","status":true,"description":"1.3.1用。一部画像表示を軽量化します。影響範囲未確認なので使用には注意","parameters":{}},
+{"name":"lightweightPicture","status":false,"description":"1.3.1用。一部画像表示を軽量化します。影響範囲未確認なので使用には注意","parameters":{}},
 {"name":"FPSlimitsettings_InitOnly","status":true,"description":"ゲームのフレームレート最大値設定をオプション項目に加えます。variablesには任意の変数の値を入れて下さい。","parameters":{"fps":"30"}},
 {"name":"ShowFPSOnStartup","status":true,"description":"タイトル画面時にFPS表示をONにさせます","parameters":{}},
 {"name":"liply_onBitmapLoad_patch","status":true,"description":"","parameters":{}},
