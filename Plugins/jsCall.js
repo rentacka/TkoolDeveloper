@@ -27,7 +27,7 @@
  *
  */
 
-//(もうこれツクールじゃないってことで未公開・・・そこまでして実行するくらいなら、手動で保存してjQueryで実行した方が早いよね・・・？)
+//(糞重たいので未公開・・・そこまでして実行するくらいなら、手動で保存してjQueryで実行した方が早いよね・・・？)
 // プラグインコマンド 4 Unity.Callし、スクリプトを保存した後にスクリプトを実行します。
 // どんなJavascriptでも動きます！別途UnityのWebviewのindex.htmlからご使用ください。
 // jsCall OverRun myFunc();
@@ -95,20 +95,15 @@
 
                     $(function () {
                         var httpObj = jQuery.get(jsSrc, "js/plugins/evCash/" + "EV" + eventID + ".js", function (data) {
-                            myFunc();
+                            TkoolEvCallFunc();
                         });
                     });
                 });
             }
 
-            if (label == 'UNITY') {
-                $(function () {
-                    Unity.call(args[1]);
-                });
-            }
-
             if (label == 'EVAL') {
-                SceneManager.eval(args[1]);
+                //SceneManager.eval(args[1]);
+                eval(args[1]);
             }
 
             // グローバル空間に定義する。何度も同じものを呼ぶと無限にメモリ消費。使うことはないな・・・
