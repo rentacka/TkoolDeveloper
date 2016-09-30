@@ -86,15 +86,17 @@
                 });
             }
 
+            // ツクールMVのマップを解析して、全イベントを検索して、その中から、jsCall文のOvverrunだけを取得して、出力・・・無理だなおんなじ文からの呼び出しだと、どのスクリプトか区別つかんし。行番号で保存するとか
+            // 実装は遠いし、jQueryから直接実行した方が早いね
             if (label == 'OVERRUN') {
-                $(function () {
-                    //イベント番号取得
-                    var eventID = $gameMap.eventIdXy(this.character(0).x, this.character(0).y)
+                //イベント番号取得
+                var eventID = $gameMap.eventIdXy(this.character(0).x, this.character(0).y)
 
+                $(function () {
                     Unity.call('OVERRUN' + " eventID " + " Script:" + args[1]);
 
                     $(function () {
-                        var httpObj = jQuery.get(jsSrc, "js/plugins/evCash/" + "EV" + eventID + ".js", function (data) {
+                        var httpObj = jQuery.get("js/plugins/evCash/" + "EV" + eventID + ".js", function (data) {
                             TkoolEvCallFunc();
                         });
                     });
