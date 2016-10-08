@@ -52,14 +52,11 @@
 
     var reqCode;
     $(function () {
-        var httpObj = jQuery.get(jsSrc, null,  function(data){
+        var httpObj = jQuery.get(jsSrc, null, function(data){
             //$.globalEval(data);
             reqCode = data;
         });
     });
-    //SceneManager.ajax.setup(); // 開発用コードかな？
-
-    //SceneManager.createHTMLDocument = '(function () {alert(test) });';
 
     var _Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
     Game_Interpreter.prototype.pluginCommand = function (command, args) {
@@ -86,25 +83,26 @@
                 });
             }
 
-            // ツクールMVのマップを解析して、全イベントを検索して、その中から、jsCall文のOvverrunだけを取得して、出力・・・無理だなおんなじ文からの呼び出しだと、どのスクリプトか区別つかんし。行番号で保存するとか
-            // 実装は遠いし、jQueryから直接実行した方が早いね
+            /*
             if (label == 'OVERRUN') {
-                //イベント番号取得
-                var eventID = $gameMap.eventIdXy(this.character(0).x, this.character(0).y)
+                var mapID = $gameMap.mapId();
+                var _x = $gamePlayer.x;
+                var _y = $gamePlayer.y
+                var scriptName = "map_" + mapID + "_pos_" + _x + "_" + _y;
 
                 $(function () {
-                    Unity.call('OVERRUN' + " eventID " + " Script:" + args[1]);
+                    var httpRequest = $.get("js/plugins/evCash/" + scriptName + ".js");
 
-                    $(function () {
-                        var httpObj = jQuery.get("js/plugins/evCash/" + "EV" + eventID + ".js", function (data) {
+                    if (httpRequest.status == "202") {
+                        var httpObj = jQuery.getScript("js/plugins/evCash/" + scriptName + ".js", function (data) {
                             TkoolEvCallFunc();
                         });
-                    });
+                    }
                 });
             }
+            */
 
             if (label == 'EVAL') {
-                //SceneManager.eval(args[1]);
                 eval(args[1]);
             }
 
@@ -118,3 +116,59 @@
         }// command
     }// Game_Interpreter
 }());
+
+function Title_jsCall(mapId, _x, _y) {
+    var scriptName = "map_" + mapId + "_pos_" + _x + "_" + _y;
+
+    var httpObj = jQuery.getScript("js/plugins/evCash/" + scriptName + ".js", function (data) {
+        TkoolEvCallFunc();
+    });
+    document.title = "jsCall:" + "success";
+}
+
+function Title_ActorPos(command)
+{
+    document.title = "ActorPos:" + $gamePlayer.x + "," + $gamePlayer.y;
+}
+
+function Title_EventPos(command) {
+    document.title = "EventPos:" + (Number($gamePlayer.x) + 1) + "," + (Number($gamePlayer.y) + 1);
+}
+
+function Title_MapDisplayName(command) {
+    document.title = "MapDisplayName:" + $gameMap.displayName();
+}
+
+function Title_MapId(command) {
+    document.title = "MapId:" + $gameMap.mapId();
+}
+
+//地形タグの取得
+function Title_TerrainTag(_x, _y) {
+    document.title = "TerrainTag:" + $gameMap.terrainTag(_x, _y);
+}
+
+//イベントIDの取得
+function Title_EventIdXy(_x, _y) {
+    document.title = "EventIdXy:" + $gameMap.eventIdXy(_x, _y);
+}
+
+//タイルIDの取得
+function Title_TileId(_x, _y, layerID) {
+    document.title = "TileId:" + $gameMap.tileId(_x, _y, layerID);
+}
+
+//リージョンIDの取得
+function Title_RegionId(_x, _y) {
+    document.title = "RegionId:" + $gameMap.regionId(_x, _y);
+}
+
+//変数に設定
+function Title_SetValue(valueID, value) {
+    document.title = "SetValue:" + $gameVariables.setValue(valueID, value);
+}
+
+
+
+
+
